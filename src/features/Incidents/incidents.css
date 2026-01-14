@@ -39,6 +39,9 @@
   border: 1px solid var(--colour-border);
   padding: 1rem;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 
   &:hover,
   &.selected {
@@ -46,8 +49,18 @@
   }
 }
 
-.incident-list-item h4 {
-  margin: 0 0 0.5rem 0;
+.incident-list-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incident-list-item-header h4 {
+  margin: 0 0.6rem 0 0;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* incident filters */

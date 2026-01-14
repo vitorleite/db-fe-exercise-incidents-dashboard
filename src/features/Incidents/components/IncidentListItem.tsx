@@ -1,7 +1,7 @@
 import { Incident } from "@/api";
 import { formatDate } from "@/utils/formatDate";
 
-import { UserDisplay } from "@/components";
+import { UserDisplay, SeverityBadge } from "@/components";
 
 interface IncidentListItemProps {
   incident: Incident;
@@ -22,10 +22,12 @@ export function IncidentListItem({
       tabIndex={0}
       onKeyDown={(e) => e.key === "Enter" && onClick()}
     >
-      <h4>{incident.title}</h4>
+      <div className="incident-list-item-header">
+        <h4>{incident.title}</h4>
+        <SeverityBadge severity={incident.severity} />
+      </div>
       <div className="incident-list-item-details">
         <div>{incident.status}</div>
-        <div>{incident.severity}</div>
         <div>
           <UserDisplay userId={incident.assigneeId} />
         </div>
