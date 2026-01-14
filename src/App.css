@@ -4,6 +4,7 @@
   --colour-surface: #f0f4f8;
   --colour-text: #1a1a1a;
   --colour-heading: #003755;
+  --colour-border: #d1d5db;
   --spacing-unit: 8px;
 
   /* ui component variables */
@@ -28,8 +29,9 @@ body {
 }
 
 .app main {
-  padding: calc(var(--spacing-unit) * 4);
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  overflow: hidden;
 }

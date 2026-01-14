@@ -1,0 +1,43 @@
+.incidents-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 3);
+  max-width: 1400px;
+
+  &.with-detail {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.incident-list-wrapper {
+  padding: calc(var(--spacing-unit) * 2);
+}
+
+.incident-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit));
+}
+
+.incident-list-item {
+  border: 1px solid var(--colour-border);
+  border-radius: var(--spacing-unit);
+  padding: calc(var(--spacing-unit) * 2);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--colour-surface);
+  }
+}
+
+.incident-list-item h4 {
+  margin: 0 0 calc(var(--spacing-unit)) 0;
+}
+
+.incident-detail {
+  box-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.1);
+  border-left: 1px solid var(--colour-border);
+  padding: calc(var(--spacing-unit) * 2);
+  height: 100%;
+}

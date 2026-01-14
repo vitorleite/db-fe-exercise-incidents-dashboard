@@ -1,0 +1,23 @@
+import { useState } from "react";
+import { IncidentList } from "./IncidentList";
+import { IncidentDetail } from "./IncidentDetail";
+
+import "./incidents.css";
+
+export function Incidents() {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  return (
+    <div className={`incidents-container ${selectedId ? "with-detail" : ""}`}>
+      <div className="incident-list-wrapper">
+        <IncidentList onSelect={setSelectedId} />
+      </div>
+
+      {selectedId && (
+        <div className="incident-detail">
+          <IncidentDetail incidentId={selectedId} />
+        </div>
+      )}
+    </div>
+  );
+}
