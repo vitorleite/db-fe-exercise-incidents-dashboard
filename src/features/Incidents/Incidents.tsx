@@ -5,12 +5,18 @@ import { IncidentDetail } from "./IncidentDetail";
 import "./incidents.css";
 
 export function Incidents() {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | undefined>();
 
   return (
     <div className={`incidents-container ${selectedId ? "with-detail" : ""}`}>
       <div className="incident-list-wrapper">
-        <IncidentList onSelect={setSelectedId} />
+        <div>
+          <h2>Incidents</h2>
+        </div>
+        <IncidentList
+          onSelect={setSelectedId}
+          selectedIncidentId={selectedId}
+        />
       </div>
 
       {selectedId && (

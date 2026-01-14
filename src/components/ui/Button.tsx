@@ -1,14 +1,18 @@
-import { Button as ButtonPrimitive } from "@base-ui/react/button";
+import * as React from "react";
 import styles from "./Button.module.css";
 
-interface ButtonProps {
-  variant?: "primary";
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary";
 }
 
-export function Button({ variant = "primary", ...props }: ButtonProps) {
+export function Button({
+  variant = "primary",
+  className,
+  ...props
+}: ButtonProps) {
   return (
-    <ButtonPrimitive
-      className={`${styles.button} ${styles[variant]}`}
+    <button
+      className={`${styles.button} ${styles[variant]} ${className || ""}`}
       {...props}
     />
   );

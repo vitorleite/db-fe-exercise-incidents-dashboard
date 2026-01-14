@@ -1,14 +1,20 @@
 import { Incident } from "@/api";
+import { formatDate } from "@/utils/formatDate";
 
 interface IncidentListItemProps {
   incident: Incident;
   onClick: () => void;
+  isSelected?: boolean;
 }
 
-export function IncidentListItem({ incident, onClick }: IncidentListItemProps) {
+export function IncidentListItem({
+  incident,
+  onClick,
+  isSelected = false,
+}: IncidentListItemProps) {
   return (
     <div
-      className="incident-list-item"
+      className={`incident-list-item ${isSelected ? "selected" : ""}`}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -19,7 +25,7 @@ export function IncidentListItem({ incident, onClick }: IncidentListItemProps) {
         <div>{incident.status}</div>
         <div>{incident.severity}</div>
         <div>{incident.assigneeId}</div>
-        <div>{incident.createdAt}</div>
+        <div>{formatDate(incident.createdAt)}</div>
       </div>
     </div>
   );

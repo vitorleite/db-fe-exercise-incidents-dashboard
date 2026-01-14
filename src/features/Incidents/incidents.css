@@ -4,10 +4,9 @@
   /* gap: calc(var(--spacing-unit)); */
   max-width: 1400px;
   height: max(70vh, 600px);
-
-  &.with-detail {
-    grid-template-columns: 2fr 3fr;
-  }
+}
+.incidents-container.with-detail {
+  grid-template-columns: 2fr 3fr;
 }
 
 .incident-list-wrapper,
@@ -35,8 +34,9 @@
   padding: calc(var(--spacing-unit) * 2);
   cursor: pointer;
 
-  &:hover {
-    background-color: var(--colour-surface);
+  &:hover,
+  &.selected {
+    background-color: var(--colour-surface-2);
   }
 }
 
