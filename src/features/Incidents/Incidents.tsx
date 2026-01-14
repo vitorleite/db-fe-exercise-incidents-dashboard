@@ -14,7 +14,7 @@ export function Incidents() {
       </div>
 
       {selectedId && (
-        <div className="incident-detail">
+        <div className="incident-detail-wrapper">
           <IncidentDetail incidentId={selectedId} />
         </div>
       )}

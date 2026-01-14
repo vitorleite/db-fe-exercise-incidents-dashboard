@@ -1,18 +1,29 @@
 .incidents-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: calc(var(--spacing-unit) * 3);
+  /* gap: calc(var(--spacing-unit)); */
   max-width: 1400px;
+  height: max(70vh, 600px);
 
   &.with-detail {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 3fr;
   }
 }
 
-.incident-list-wrapper {
+.incident-list-wrapper,
+.incident-detail-wrapper {
   padding: calc(var(--spacing-unit) * 2);
+  height: 100%;
+  overflow-y: auto;
 }
 
+.incident-detail-wrapper {
+  background-color: var(--colour-surface-2);
+  border-left: 1px solid var(--colour-border);
+  height: 100%;
+}
+
+/* incident list */
 .incident-list-items {
   display: flex;
   flex-direction: column;
@@ -21,9 +32,7 @@
 
 .incident-list-item {
   border: 1px solid var(--colour-border);
-  border-radius: var(--spacing-unit);
   padding: calc(var(--spacing-unit) * 2);
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 
   &:hover {
@@ -35,9 +44,4 @@
   margin: 0 0 calc(var(--spacing-unit)) 0;
 }
 
-.incident-detail {
-  box-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.1);
-  border-left: 1px solid var(--colour-border);
-  padding: calc(var(--spacing-unit) * 2);
-  height: 100%;
-}
+/* incident detail */

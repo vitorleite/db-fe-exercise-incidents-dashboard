@@ -15,7 +15,12 @@ export function IncidentListItem({ incident, onClick }: IncidentListItemProps) {
       onKeyDown={(e) => e.key === "Enter" && onClick()}
     >
       <h4>{incident.title}</h4>
-      <div>{incident.assigneeId}</div>
+      <div className="incident-list-item-details">
+        <div>{incident.status}</div>
+        <div>{incident.severity}</div>
+        <div>{incident.assigneeId}</div>
+        <div>{incident.createdAt}</div>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 :root {
   --colour-brand: #012347;
   --colour-primary: #085ef1;
-  --colour-surface: #f0f4f8;
+  --colour-surface: #ebebe7;
+  --colour-surface-2: #fafaf9;
   --colour-text: #1a1a1a;
   --colour-heading: #003755;
   --colour-border: #d1d5db;
@@ -29,8 +30,8 @@ body {
 }
 
 .app main {
+  border: 1px solid var(--colour-border);
   background-color: #ffffff;
-  border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: left;
   overflow: hidden;
