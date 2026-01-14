@@ -1,11 +1,35 @@
+:root {
+  --colour-brand: #012347;
+  --colour-primary: #085ef1;
+  --colour-surface: #f0f4f8;
+  --colour-text: #1a1a1a;
+  --colour-heading: #003755;
+  --spacing-unit: 8px;
+
+  /* ui component variables */
+  --button-primary-bg: var(--colour-primary);
+  --button-primary-text: #ffffff;
+}
+
+body {
+  background-color: var(--colour-surface);
+  color: var(--colour-text);
+}
+
 .app {
   text-align: center;
-  padding: 2rem;
 }
 
 .app h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #003755;
+  color: var(--colour-heading);
   font-weight: 600;
+}
+
+.app main {
+  padding: calc(var(--spacing-unit) * 4);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
