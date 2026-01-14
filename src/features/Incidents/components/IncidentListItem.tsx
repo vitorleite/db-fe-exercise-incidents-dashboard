@@ -1,6 +1,8 @@
 import { Incident } from "@/api";
 import { formatDate } from "@/utils/formatDate";
 
+import { UserDisplay } from "@/components";
+
 interface IncidentListItemProps {
   incident: Incident;
   onClick: () => void;
@@ -24,7 +26,9 @@ export function IncidentListItem({
       <div className="incident-list-item-details">
         <div>{incident.status}</div>
         <div>{incident.severity}</div>
-        <div>{incident.assigneeId}</div>
+        <div>
+          <UserDisplay userId={incident.assigneeId} />
+        </div>
         <div>{formatDate(incident.createdAt)}</div>
       </div>
     </div>

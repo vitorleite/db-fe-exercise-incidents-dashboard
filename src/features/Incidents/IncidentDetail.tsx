@@ -1,6 +1,7 @@
 import { Loading } from "@/components/ui";
 import { useIncidentQuery } from "./hooks/useIncidentQuery";
 import { formatDate } from "@/utils/formatDate";
+import { UserDisplay } from "@/components/UserDisplay";
 
 interface IncidentDetailProps {
   incidentId: string;
@@ -48,7 +49,9 @@ export function IncidentDetail({ incidentId }: IncidentDetailProps) {
         <h3>Details</h3>
         <dl className="incident-detail-list">
           <dt>Assignee</dt>
-          <dd>{incident.assigneeId || "Unassigned"}</dd>
+          <dd>
+            <UserDisplay userId={incident.assigneeId} />
+          </dd>
 
           <dt>Created</dt>
           <dd>{formatDate(incident.createdAt)}</dd>

@@ -19,6 +19,15 @@ export function IncidentList({
 }: IncidentListProps) {
   const { data: incidents, isLoading, error } = useIncidentsQuery();
 
+  const handleSelect = (incidentId: Incident["id"] | undefined) => {
+    if (incidentId === selectedIncidentId) {
+      onSelect(undefined);
+      return;
+    }
+
+    onSelect(incidentId);
+  };
+
   const [filters, setFilters] = useState<Filters>({
     status: "all",
     severity: "all",
@@ -64,7 +73,7 @@ export function IncidentList({
           <IncidentListItem
             key={incident.id}
             incident={incident}
-            onClick={() => onSelect(incident.id)}
+            onClick={() => handleSelect(incident.id)}
             isSelected={incident.id === selectedIncidentId}
           />
         ))}

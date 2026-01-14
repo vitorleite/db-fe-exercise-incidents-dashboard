@@ -2,10 +2,12 @@ import { useState } from "react";
 import { IncidentList } from "./IncidentList";
 import { IncidentDetail } from "./IncidentDetail";
 
+import type { Incident } from "@/api/types";
+
 import "./incidents.css";
 
 export function Incidents() {
-  const [selectedId, setSelectedId] = useState<string | undefined>();
+  const [selectedId, setSelectedId] = useState<Incident["id"] | undefined>();
 
   return (
     <div className={`incidents-container ${selectedId ? "with-detail" : ""}`}>
