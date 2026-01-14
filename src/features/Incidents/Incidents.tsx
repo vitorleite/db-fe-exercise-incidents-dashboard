@@ -5,6 +5,7 @@ import { IncidentDetail } from "./IncidentDetail";
 import type { Incident } from "@/api/types";
 
 import "./incidents.css";
+import { Button } from "@/components/ui/Button";
 
 export function Incidents() {
   const [selectedId, setSelectedId] = useState<Incident["id"] | undefined>();
@@ -22,6 +23,9 @@ export function Incidents() {
 
       {selectedId && (
         <div className="incident-detail-wrapper">
+          <Button variant="link" onClick={() => setSelectedId(undefined)}>
+            Close
+          </Button>
           <IncidentDetail incidentId={selectedId} />
         </div>
       )}

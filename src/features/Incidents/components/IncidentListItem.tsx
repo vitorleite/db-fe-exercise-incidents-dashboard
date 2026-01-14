@@ -28,10 +28,10 @@ export function IncidentListItem({
       </div>
       <div className="incident-list-item-details">
         <div>{incident.status}</div>
-        <div>
-          <UserDisplay userId={incident.assigneeId} />
+        <UserDisplay userId={incident.assigneeId} />
+        <div className="incident-list-item-created-at">
+          {formatDate(incident.createdAt)}
         </div>
-        <div>{formatDate(incident.createdAt)}</div>
       </div>
     </div>
   );

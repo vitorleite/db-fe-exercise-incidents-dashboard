@@ -2,6 +2,7 @@ import { Loading } from "@/components/ui";
 import { useIncidentQuery } from "./hooks/useIncidentQuery";
 import { formatDate } from "@/utils/formatDate";
 import { UserDisplay } from "@/components/UserDisplay";
+import { SeverityBadge } from "@/components";
 
 interface IncidentDetailProps {
   incidentId: string;
@@ -32,11 +33,7 @@ export function IncidentDetail({ incidentId }: IncidentDetailProps) {
           >
             {incident.status}
           </span>
-          <span
-            className={`incident-severity ${incident.severity.toLowerCase()}`}
-          >
-            {incident.severity}
-          </span>
+          <SeverityBadge severity={incident.severity} />
         </div>
       </div>
 

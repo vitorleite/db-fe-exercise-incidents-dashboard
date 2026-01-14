@@ -10,3 +10,12 @@
   background-color: var(--colour-primary);
   color: var(--button-primary-text);
 }
+
+.link {
+  background: none;
+  border: none;
+  color: var(--colour-primary);
+  padding: 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
