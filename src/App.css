@@ -6,7 +6,6 @@
   --colour-text: #1a1a1a;
   --colour-heading: #003755;
   --colour-border: #d1d5db;
-  --spacing-unit: 8px;
 
   /* ui component variables */
   --button-primary-bg: var(--colour-primary);
@@ -16,6 +15,13 @@
 body {
   background-color: var(--colour-surface);
   color: var(--colour-text);
+}
+
+input,
+select {
+  padding: 0.5rem;
+  border: 1px solid var(--colour-border);
+  border-radius: 4px;
 }
 
 .app {

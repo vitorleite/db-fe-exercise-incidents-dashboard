@@ -10,9 +10,6 @@ export function Incidents() {
   return (
     <div className={`incidents-container ${selectedId ? "with-detail" : ""}`}>
       <div className="incident-list-wrapper">
-        <div>
-          <h2>Incidents</h2>
-        </div>
         <IncidentList
           onSelect={setSelectedId}
           selectedIncidentId={selectedId}

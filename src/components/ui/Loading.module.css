@@ -1,4 +1,4 @@
 .loading {
-  padding: calc(var(--spacing-unit) * 2);
+  padding: 1rem;
   text-align: center;
 }
