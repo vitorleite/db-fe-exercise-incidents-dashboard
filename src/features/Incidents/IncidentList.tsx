@@ -1,6 +1,6 @@
 import { useIncidentsQuery } from "@/features/Incidents/hooks/useIncidentsQuery";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import type { Incident } from "@/api/types";
 import type { Filters } from "./types";
@@ -9,7 +9,7 @@ import { Loading } from "@/components/ui";
 import { IncidentListItem, IncidentFilters } from "./components";
 
 interface IncidentListProps {
-  onSelect: (incidentId: Incident["id"]) => void;
+  onSelect: (incidentId: Incident["id"] | undefined) => void;
   selectedIncidentId?: Incident["id"];
 }
 
@@ -42,6 +42,11 @@ export function IncidentList({
       return matchesStatus && matchesSeverity && matchesSearch;
     });
   }, [incidents, filters]);
+
+  useEffect(() => {
+    if (filteredIncidents.find((i) => i.id === selectedIncidentId)) return;
+    onSelect(undefined);
+  }, [filters, onSelect, filteredIncidents, selectedIncidentId]);
 
   if (isLoading) {
     return <Loading />;
