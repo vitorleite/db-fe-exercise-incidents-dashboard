@@ -4,7 +4,7 @@ import { incidentKeys } from "./queryKeys";
 
 interface UpdateIncidentData {
   id: Incident["id"];
-  data: Pick<Incident, "status" | "assigneeId">;
+  data: Partial<Pick<Incident, "status" | "assigneeId">>;
 }
 
 export function useUpdateIncidentMutation() {

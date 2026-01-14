@@ -3,6 +3,9 @@ import { useIncidentQuery } from "./hooks/useIncidentQuery";
 import { formatDate } from "@/utils/formatDate";
 import { UserDisplay } from "@/components/UserDisplay";
 import { SeverityBadge } from "@/components";
+import { StatusSelect } from "./components/StatusSelect";
+import { useUpdateIncidentMutation } from "./hooks/useUpdateIncidentMutation";
+import { UserSelect } from "./components/UserSelect";
 
 interface IncidentDetailProps {
   incidentId: string;
@@ -10,6 +13,7 @@ interface IncidentDetailProps {
 
 export function IncidentDetail({ incidentId }: IncidentDetailProps) {
   const { data: incident, isLoading, error } = useIncidentQuery(incidentId);
+  const updateMutation = useUpdateIncidentMutation();
 
   if (isLoading) {
     return <Loading />;
@@ -27,13 +31,37 @@ export function IncidentDetail({ incidentId }: IncidentDetailProps) {
     <div className="incident-detail">
       <div className="incident-detail-header">
         <h2>{incident.title}</h2>
+
         <div className="incident-detail-meta">
-          <span
-            className={`incident-status ${incident.status.toLowerCase().replace(" ", "-")}`}
-          >
-            {incident.status}
-          </span>
-          <SeverityBadge severity={incident.severity} />
+          <div className="detail-field">
+            <label htmlFor="status">Status</label>
+            <StatusSelect
+              id="status"
+              value={incident.status}
+              onChange={(newStatus) => {
+                updateMutation.mutate({
+                  id: incidentId,
+                  data: { status: newStatus },
+                });
+              }}
+              disabled={updateMutation.isPending}
+            />
+          </div>
+
+          <div className="detail-field">
+            <label htmlFor="assignee">Assignee</label>
+            <UserSelect
+              id="assignee"
+              value={incident.assigneeId}
+              onChange={(newAssigneeId) => {
+                updateMutation.mutate({
+                  id: incidentId,
+                  data: { assigneeId: newAssigneeId },
+                });
+              }}
+              disabled={updateMutation.isPending}
+            />
+          </div>
         </div>
       </div>
 
@@ -45,9 +73,9 @@ export function IncidentDetail({ incidentId }: IncidentDetailProps) {
       <div className="incident-detail-section">
         <h3>Details</h3>
         <dl className="incident-detail-list">
-          <dt>Assignee</dt>
+          <dt>Severity</dt>
           <dd>
-            <UserDisplay userId={incident.assigneeId} />
+            <SeverityBadge severity={incident.severity} />
           </dd>
 
           <dt>Created</dt>
