@@ -8,10 +8,12 @@ import "./incidents.css";
 
 export function Incidents() {
   const [selectedId, setSelectedId] = useState<Incident["id"] | undefined>();
-
   return (
     <div className={`incidents-container ${selectedId ? "with-detail" : ""}`}>
-      <div className="incident-list-wrapper">
+      <div className="incidents-list-wrapper">
+        <div className="incidents-list-header">
+          <h2>Incidents</h2>
+        </div>
         <IncidentList
           onSelect={setSelectedId}
           selectedIncidentId={selectedId}

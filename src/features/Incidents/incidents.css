@@ -8,7 +8,8 @@
   grid-template-columns: 2fr 3fr;
 }
 
-.incident-list-wrapper,
+/* wrappers */
+.incidents-list-wrapper,
 .incident-detail-wrapper {
   padding: 1rem;
   height: 100%;
@@ -22,6 +23,12 @@
 }
 
 /* incident list */
+.incidents-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .incident-list-items {
   display: flex;
   flex-direction: column;
@@ -46,7 +53,7 @@
 /* incident filters */
 .incident-filters {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
