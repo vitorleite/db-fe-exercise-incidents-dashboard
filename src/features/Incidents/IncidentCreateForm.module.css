@@ -1,0 +1,51 @@
+.createForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.createForm h2 {
+  margin: 0 0 1.5rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formField label {
+  font-weight: 600;
+}
+
+.inputError {
+  border-color: #dc2626 !important;
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.formError {
+  padding: 1rem;
+  color: #c00;
+  font-size: 0.8rem;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  margin-top: auto;
+  border-top: 1px solid var(--colour-border);
+}

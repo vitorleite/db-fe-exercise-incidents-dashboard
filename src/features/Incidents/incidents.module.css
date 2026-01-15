@@ -5,32 +5,32 @@
   min-width: 300px;
   max-width: 1400px;
   height: max(70vh, 600px);
-  grid-template-areas: "incident-list";
+  grid-template-areas: "sidebar";
 }
 
-.withDetail {
-  grid-template-areas: "incident-detail";
+.withDrawer {
+  grid-template-areas: "content";
 
   @media (min-width: 640px) {
     grid-template-columns: 2fr 3fr;
-    grid-template-areas: "incident-list incident-detail";
+    grid-template-areas: "sidebar content";
   }
 }
 
 /* wrappers */
 .incidentsListWrapper,
-.incidentDetailWrapper {
+.incidentContentWrapper {
   padding: 1rem;
   height: 100%;
   overflow-y: auto;
 }
 
 .incidentListWrapper {
-  grid-area: incident-list;
+  grid-area: sidebar;
 }
 
-.incidentDetailWrapper {
-  grid-area: incident-detail;
+.incidentContentWrapper {
+  grid-area: content;
   background-color: var(--colour-surface-2);
   border-left: 1px solid var(--colour-border);
   height: 100%;
@@ -41,6 +41,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .incidentListItems {
