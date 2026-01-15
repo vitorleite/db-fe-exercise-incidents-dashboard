@@ -1,4 +1,4 @@
-import { Loading } from "@/components/ui";
+import { Button, EmptyState, Loading } from "@/components/ui";
 import { Incident } from "@/api/types";
 
 import { useIncidentQuery, useUpdateIncidentMutation } from "./hooks";
@@ -14,7 +14,7 @@ interface IncidentDetailProps {
 }
 
 export function IncidentDetail({ id }: IncidentDetailProps) {
-  const { data: incident, isLoading, error } = useIncidentQuery(id);
+  const { data: incident, isLoading, error, refetch } = useIncidentQuery(id);
   const updateMutation = useUpdateIncidentMutation();
 
   if (isLoading) {
@@ -22,7 +22,17 @@ export function IncidentDetail({ id }: IncidentDetailProps) {
   }
 
   if (error) {
-    return <div className="incident-detail-error">Error: {error.message}</div>;
+    return (
+      <EmptyState
+        title="Error loading incident"
+        description={error.message}
+        action={
+          <Button variant="link" onClick={() => refetch()}>
+            Try again
+          </Button>
+        }
+      />
+    );
   }
 
   if (!incident) {

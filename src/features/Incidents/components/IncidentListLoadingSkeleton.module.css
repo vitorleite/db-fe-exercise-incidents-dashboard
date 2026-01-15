@@ -1,0 +1,36 @@
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skeletonItem {
+  padding: 1rem;
+  border: 1px solid var(--colour-border);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeletonTitle {
+  height: 20px;
+  background-color: var(--colour-surface);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  width: 70%;
+}
+
+.skeletonMeta {
+  height: 16px;
+  background-color: var(--colour-surface);
+  border-radius: 4px;
+  width: 40%;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

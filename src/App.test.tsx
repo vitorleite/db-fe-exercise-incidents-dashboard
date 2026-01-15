@@ -21,10 +21,6 @@ describe("App", () => {
   it("renders the the list of incidents from seed data", async () => {
     render(<App />);
 
-    // loading appears
-    expect(screen.getByTestId("loading")).toBeInTheDocument();
-    await waitForElementToBeRemoved(() => screen.getByTestId("loading"));
-
     // incidents are rendered
     const items = await screen.findAllByTestId("incident-list-item", {
       exact: false,

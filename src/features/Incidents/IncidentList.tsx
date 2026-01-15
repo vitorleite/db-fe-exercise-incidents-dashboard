@@ -5,10 +5,14 @@ import { useEffect, useMemo, useState } from "react";
 import type { Incident } from "@/api/types";
 import type { Filters } from "./types";
 
-import { Loading } from "@/components/ui";
-import { IncidentFilters, IncidentListItem } from "./components";
+import {
+  IncidentFilters,
+  IncidentListItem,
+  IncidentListLoadingSkeleton,
+} from "./components";
 
 import styles from "./incidents.module.css";
+import { Button, EmptyState } from "@/components/ui";
 
 interface IncidentListProps {
   onSelect: (incidentId: Incident["id"] | undefined) => void;
@@ -19,7 +23,7 @@ export function IncidentList({
   onSelect,
   selectedIncidentId,
 }: IncidentListProps) {
-  const { data: incidents, isLoading, error } = useIncidentsQuery();
+  const { data: incidents, isLoading, error, refetch } = useIncidentsQuery();
 
   const handleSelect = (incidentId: Incident["id"] | undefined) => {
     if (incidentId === selectedIncidentId) {
@@ -60,17 +64,33 @@ export function IncidentList({
   }, [filters, onSelect, filteredIncidents, selectedIncidentId]);
 
   if (isLoading) {
-    return <Loading />;
+    return <IncidentListLoadingSkeleton />;
   }
 
   if (error) {
-    return <div>Error loading incidents: {error.message}</div>;
+    return (
+      <EmptyState
+        title="Error loading incidents"
+        description={error.message}
+        action={
+          <Button variant="link" onClick={() => refetch()}>
+            Try again
+          </Button>
+        }
+      />
+    );
   }
 
   return (
     <>
       <IncidentFilters filters={filters} onFiltersChange={setFilters} />
       <div className={styles.incidentListItems}>
+        {filteredIncidents.length === 0 && (
+          <EmptyState
+            title="No incidents found"
+            description="Try adjusting your filters to find incidents."
+          />
+        )}
         {filteredIncidents?.map((incident) => (
           <IncidentListItem
             key={incident.id}
