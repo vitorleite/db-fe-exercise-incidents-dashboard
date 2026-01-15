@@ -1,0 +1,23 @@
+.incidentMeta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit));
+}
+
+.incidentMeta dt {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--colour-text-secondary);
+  text-transform: uppercase;
+}
+
+.incidentMeta dd {
+  margin: 0;
+  color: var(--colour-text);
+}

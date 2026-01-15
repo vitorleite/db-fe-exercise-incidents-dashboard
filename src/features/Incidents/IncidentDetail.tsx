@@ -1,18 +1,20 @@
 import { Loading } from "@/components/ui";
-import { useIncidentQuery } from "./hooks/useIncidentQuery";
-import { formatDate } from "@/utils/formatDate";
-import { UserDisplay } from "@/components/UserDisplay";
-import { SeverityBadge } from "@/components";
-import { StatusSelect } from "./components/StatusSelect";
-import { useUpdateIncidentMutation } from "./hooks/useUpdateIncidentMutation";
-import { UserSelect } from "./components/UserSelect";
+import { Incident } from "@/api/types";
+
+import { useIncidentQuery, useUpdateIncidentMutation } from "./hooks";
+import {
+  IncidentDescription,
+  IncidentMeta,
+  IncidentStatusHistory,
+  IncidentTitle,
+} from "./components";
 
 interface IncidentDetailProps {
-  incidentId: string;
+  id: Incident["id"];
 }
 
-export function IncidentDetail({ incidentId }: IncidentDetailProps) {
-  const { data: incident, isLoading, error } = useIncidentQuery(incidentId);
+export function IncidentDetail({ id }: IncidentDetailProps) {
+  const { data: incident, isLoading, error } = useIncidentQuery(id);
   const updateMutation = useUpdateIncidentMutation();
 
   if (isLoading) {
@@ -28,80 +30,25 @@ export function IncidentDetail({ incidentId }: IncidentDetailProps) {
   }
 
   return (
-    <div className="incident-detail">
-      <div className="incident-detail-header">
-        <h2>{incident.title}</h2>
+    <div className="incidentDetail">
+      <IncidentTitle title={incident.title} />
 
-        <div className="incident-detail-meta">
-          <div className="detail-field">
-            <label htmlFor="status">Status</label>
-            <StatusSelect
-              id="status"
-              value={incident.status}
-              onChange={(newStatus) => {
-                updateMutation.mutate({
-                  id: incidentId,
-                  data: { status: newStatus },
-                });
-              }}
-              disabled={updateMutation.isPending}
-            />
-          </div>
+      <IncidentMeta
+        incident={incident}
+        isUpdating={updateMutation.isPending}
+        onStatusChange={(status) =>
+          updateMutation.mutateAsync({ id, data: { status } })
+        }
+        onAssigneeChange={(assigneeId) =>
+          updateMutation.mutateAsync({ id, data: { assigneeId } })
+        }
+      />
 
-          <div className="detail-field">
-            <label htmlFor="assignee">Assignee</label>
-            <UserSelect
-              id="assignee"
-              value={incident.assigneeId}
-              onChange={(newAssigneeId) => {
-                updateMutation.mutate({
-                  id: incidentId,
-                  data: { assigneeId: newAssigneeId },
-                });
-              }}
-              disabled={updateMutation.isPending}
-            />
-          </div>
-        </div>
-      </div>
+      <h3>Description</h3>
+      <IncidentDescription description={incident.description} />
 
-      <div className="incident-detail-section">
-        <h3>Description</h3>
-        <p>{incident.description}</p>
-      </div>
-
-      <div className="incident-detail-section">
-        <h3>Details</h3>
-        <dl className="incident-detail-list">
-          <dt>Severity</dt>
-          <dd>
-            <SeverityBadge severity={incident.severity} />
-          </dd>
-
-          <dt>Created</dt>
-          <dd>{formatDate(incident.createdAt)}</dd>
-
-          <dt>Updated</dt>
-          <dd>{formatDate(incident.updatedAt)}</dd>
-        </dl>
-      </div>
-
-      {incident.statusHistory && incident.statusHistory.length > 0 && (
-        <div className="incident-detail-section">
-          <h3>Status History</h3>
-          <div className="incident-status-history">
-            {incident.statusHistory.map((entry, index) => (
-              <div key={index} className="status-history-entry">
-                <div className="status-history-status">{entry.status}</div>
-                <div className="status-history-time">
-                  {formatDate(entry.changedAt)}
-                </div>
-                <div className="status-history-user">by {entry.changedBy}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <h3>Status History</h3>
+      <IncidentStatusHistory history={incident.statusHistory} />
     </div>
   );
 }

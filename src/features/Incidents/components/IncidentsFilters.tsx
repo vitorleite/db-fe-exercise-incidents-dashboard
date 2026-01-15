@@ -1,6 +1,8 @@
 import { IncidentSeverity, IncidentStatus } from "@/api";
 import { Filters } from "../types";
 
+import styles from "../incidents.module.css";
+
 interface IncidentFiltersProps {
   filters: Filters;
   onFiltersChange: (newFilters: Filters) => void;
@@ -11,7 +13,7 @@ export function IncidentFilters({
   onFiltersChange,
 }: IncidentFiltersProps) {
   return (
-    <div className="incident-filters">
+    <div className={styles.incidentFilters}>
       <input
         type="text"
         placeholder="Search incidents..."

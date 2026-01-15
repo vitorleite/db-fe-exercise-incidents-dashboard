@@ -1,4 +1,4 @@
-import type { IncidentStatus } from "@/api/types";
+import { type IncidentStatus, STATUS_OPTIONS } from "@/api";
 
 interface StatusSelectProps {
   value: IncidentStatus;
@@ -6,8 +6,6 @@ interface StatusSelectProps {
   disabled?: boolean;
   id?: string;
 }
-
-const STATUS_OPTIONS: IncidentStatus[] = ["Open", "In Progress", "Resolved"];
 
 export function StatusSelect({
   value,

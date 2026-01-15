@@ -6,14 +6,14 @@ interface SeverityBadgeProps {
   severity: IncidentSeverity;
 }
 
-export function SeverityBadge({ severity }: SeverityBadgeProps) {
-  const severityMap: Record<IncidentSeverity, string> = {
-    Low: "severityLow",
-    Medium: "severityMedium",
-    High: "severityHigh",
-    Critical: "severityCritical",
-  };
+const severityMap: Record<IncidentSeverity, string> = {
+  Low: "severityLow",
+  Medium: "severityMedium",
+  High: "severityHigh",
+  Critical: "severityCritical",
+};
 
+export function SeverityBadge({ severity }: SeverityBadgeProps) {
   const severityClass = severityMap[severity] || "severityNone";
 
   return (

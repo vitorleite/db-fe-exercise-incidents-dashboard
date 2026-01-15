@@ -1,0 +1,19 @@
+.statusHistory {
+  list-style: disc;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.statusHistoryItem {
+  padding: 0.2rem 0;
+}
+
+.statusHistoryStatus {
+  font-weight: 600;
+}
+
+.statusHistoryMeta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}

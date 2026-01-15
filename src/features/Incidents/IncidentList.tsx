@@ -6,7 +6,9 @@ import type { Incident } from "@/api/types";
 import type { Filters } from "./types";
 
 import { Loading } from "@/components/ui";
-import { IncidentListItem, IncidentFilters } from "./components";
+import { IncidentFilters, IncidentListItem } from "./components";
+
+import styles from "./incidents.module.css";
 
 interface IncidentListProps {
   onSelect: (incidentId: Incident["id"] | undefined) => void;
@@ -68,7 +70,7 @@ export function IncidentList({
   return (
     <>
       <IncidentFilters filters={filters} onFiltersChange={setFilters} />
-      <div className="incident-list-items">
+      <div className={styles.incidentListItems}>
         {filteredIncidents?.map((incident) => (
           <IncidentListItem
             key={incident.id}

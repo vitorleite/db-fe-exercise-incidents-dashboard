@@ -1,0 +1,26 @@
+.incidentListItem {
+  border: 1px solid var(--colour-border);
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  &:hover,
+  &.selected {
+    background-color: var(--colour-surface-2);
+  }
+}
+
+.incidentListItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.incidentListItemDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  font-size: 0.9rem;
+  color: var(--colour-text-secondary);
+}

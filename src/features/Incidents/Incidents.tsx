@@ -4,15 +4,18 @@ import { IncidentDetail } from "./IncidentDetail";
 
 import type { Incident } from "@/api/types";
 
-import "./incidents.css";
-import { Button } from "@/components/ui/Button";
+import styles from "./incidents.module.css";
+import { Button } from "@/components/ui";
 
 export function Incidents() {
   const [selectedId, setSelectedId] = useState<Incident["id"] | undefined>();
+
   return (
-    <div className={`incidents-container ${selectedId ? "with-detail" : ""}`}>
-      <div className="incidents-list-wrapper">
-        <div className="incidents-list-header">
+    <div
+      className={`${styles.incidentsContainer} ${selectedId ? styles.withDetail : ""}`}
+    >
+      <div className={styles.incidentsListWrapper}>
+        <div className={styles.incidentsListHeader}>
           <h2>Incidents</h2>
         </div>
         <IncidentList
@@ -22,11 +25,11 @@ export function Incidents() {
       </div>
 
       {selectedId && (
-        <div className="incident-detail-wrapper">
+        <div className={styles.incidentDetailWrapper}>
           <Button variant="link" onClick={() => setSelectedId(undefined)}>
             Close
           </Button>
-          <IncidentDetail incidentId={selectedId} />
+          <IncidentDetail id={selectedId} />
         </div>
       )}
     </div>
