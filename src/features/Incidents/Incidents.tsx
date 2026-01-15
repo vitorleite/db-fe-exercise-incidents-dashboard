@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { IncidentList } from "./IncidentList";
 import { IncidentDetail } from "./IncidentDetail";
 import { IncidentCreateForm } from "./IncidentCreateForm";
