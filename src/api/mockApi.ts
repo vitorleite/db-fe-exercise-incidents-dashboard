@@ -48,7 +48,6 @@ const routes: Route[] = [
     method: "GET",
     pattern: /^\/api\/incidents$/,
     handler: async () => {
-      console.log("Fetching incidents...");
       await delay(SIMULATED_DELAY);
       return jsonResponse(getIncidents());
     },
