@@ -10,6 +10,9 @@
   /* ui component variables */
   --button-primary-bg: var(--colour-primary);
   --button-primary-text: #ffffff;
+
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--colour-text);
 }
 
 body {
@@ -49,4 +52,11 @@ h3 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: left;
   overflow: hidden;
+}
+
+.app-actions {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }

@@ -22,6 +22,7 @@ export function IncidentListItem({
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === "Enter" && onClick()}
+      data-testid={`incident-list-item-${incident.id}`}
     >
       <div className={styles.incidentListItemHeader}>
         <h3>{incident.title}</h3>

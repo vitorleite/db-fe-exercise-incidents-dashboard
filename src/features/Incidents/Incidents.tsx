@@ -29,6 +29,7 @@ export function Incidents() {
               setIsCreating(true);
               setSelectedId(undefined);
             }}
+            data-testid="create-incident-button"
           >
             Create Incident
           </Button>

@@ -18,6 +18,7 @@ export function UserSelect({
   return (
     <select
       id={id}
+      aria-label="Change incident assignee"
       value={value || ""}
       onChange={(e) => onChange(e.target.value || null)}
       disabled={disabled || isLoading}

@@ -16,6 +16,7 @@ export function StatusSelect({
   return (
     <select
       id={id}
+      aria-label="Change incident status"
       value={value}
       onChange={(e) => onChange(e.target.value as IncidentStatus)}
       disabled={disabled}

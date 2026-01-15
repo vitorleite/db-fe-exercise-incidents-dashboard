@@ -16,6 +16,7 @@ export function IncidentFilters({
     <div className={styles.incidentFilters}>
       <input
         type="text"
+        aria-label="Filter incidents by name"
         placeholder="Search incidents..."
         value={filters.search}
         onChange={(e) =>
@@ -25,6 +26,7 @@ export function IncidentFilters({
 
       <select
         value={filters.status}
+        aria-label="Filter by status"
         onChange={(e) =>
           onFiltersChange({
             ...filters,
@@ -40,6 +42,7 @@ export function IncidentFilters({
 
       <select
         value={filters.severity}
+        aria-label="Filter by severity"
         onChange={(e) =>
           onFiltersChange({
             ...filters,

@@ -128,8 +128,12 @@ export function IncidentCreateForm({
           <Button type="button" onClick={onCancel} variant="secondary">
             Cancel
           </Button>
-          <Button type="submit" disabled={createMutation.isPending}>
-            {createMutation.isPending ? "Creating..." : "Create Incident"}
+          <Button
+            type="submit"
+            disabled={createMutation.isPending}
+            data-testid="submit-incident-button"
+          >
+            Create Incident
           </Button>
         </div>
       </form>
