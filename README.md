@@ -40,7 +40,7 @@ Open the app at [http://localhost:5173](http://localhost:5173)
 
 - Server state: Tanstack Query with centralized keys, optimistic updates, and cache invalidation
 - UI state: React `useState` for local component state and view navigation
-- Why: I've used Tanstack Query extensively in recent projects it enjoyable to use, its patterns are clear and suit well to managing server state
+- Why: I've used Tanstack Query extensively in recent projects and enjoy using it. I find its a clear approach to managing server state
 
 ### Data fetching
 
