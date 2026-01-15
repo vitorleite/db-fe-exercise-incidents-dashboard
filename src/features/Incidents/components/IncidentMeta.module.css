@@ -7,7 +7,7 @@
 .metaItem {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing-unit));
+  gap: 0.1rem;
 }
 
 .incidentMeta dt {
