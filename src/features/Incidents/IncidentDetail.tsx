@@ -1,4 +1,4 @@
-import { Button, EmptyState, Loading } from "@/components/ui";
+import { Button, EmptyState, LoadingSkeleton } from "@/components/ui";
 import { Incident } from "@/api/types";
 
 import { useIncidentQuery, useUpdateIncidentMutation } from "./hooks";
@@ -18,7 +18,18 @@ export function IncidentDetail({ id }: IncidentDetailProps) {
   const updateMutation = useUpdateIncidentMutation();
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <>
+        <LoadingSkeleton size="large" width="75%" margin="lg" />
+        <LoadingSkeleton count={2} size="small" width="25%" />
+
+        <LoadingSkeleton size="large" width="55%" margin="lg" />
+        <LoadingSkeleton count={1} size="small" />
+
+        <LoadingSkeleton size="large" width="30%" margin="lg" />
+        <LoadingSkeleton count={3} size="small" width="45%" />
+      </>
+    );
   }
 
   if (error) {

@@ -1,0 +1,45 @@
+.loadingSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: var(--width, 100%);
+  border-radius: 4px;
+  background-color: var(--colour-surface);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.small {
+  margin: 0.5rem 0;
+  height: 16px;
+}
+
+.medium {
+  margin: 1rem 0;
+  height: 24px;
+}
+
+.large {
+  margin: 2rem 0 0 0;
+  height: 32px;
+}
+
+/* these namings aren't great, i'd refactor this later */
+.sm {
+  margin-top: 0.5rem;
+}
+.md {
+  margin-top: 1rem;
+}
+.lg {
+  margin-top: 2rem;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

@@ -5,14 +5,10 @@ import { useEffect, useMemo, useState } from "react";
 import type { Incident } from "@/api/types";
 import type { Filters } from "./types";
 
-import {
-  IncidentFilters,
-  IncidentListItem,
-  IncidentListLoadingSkeleton,
-} from "./components";
+import { IncidentFilters, IncidentListItem } from "./components";
 
 import styles from "./incidents.module.css";
-import { Button, EmptyState } from "@/components/ui";
+import { Button, EmptyState, LoadingSkeleton } from "@/components/ui";
 
 interface IncidentListProps {
   onSelect: (incidentId: Incident["id"] | undefined) => void;
@@ -64,7 +60,18 @@ export function IncidentList({
   }, [filters, onSelect, filteredIncidents, selectedIncidentId]);
 
   if (isLoading) {
-    return <IncidentListLoadingSkeleton />;
+    return (
+      <>
+        <LoadingSkeleton size="medium" width="55%" margin="lg" />
+        <LoadingSkeleton size="small" width="70%" />
+
+        <LoadingSkeleton size="medium" width="45%" margin="lg" />
+        <LoadingSkeleton size="small" width="70%" />
+
+        <LoadingSkeleton size="medium" width="50%" margin="lg" />
+        <LoadingSkeleton size="small" width="70%" />
+      </>
+    );
   }
 
   if (error) {
